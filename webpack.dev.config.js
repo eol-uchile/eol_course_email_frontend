@@ -7,7 +7,6 @@ module.exports = createConfig('webpack-dev', {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    publicPath: '/',
     disableHostCheck: true, // Local development with custom domain
   },
 });
