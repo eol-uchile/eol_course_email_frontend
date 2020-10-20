@@ -1,0 +1,20 @@
+version: '3.7'
+    
+services:
+  front:
+    build: 
+      context: .
+      target: dev
+    command: npm start
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports: 
+      - "3000:3000"
+
+  # The Redis image will run on the sandbox network
+
+networks:
+  default:
+      external:
+          name: juniper_default
