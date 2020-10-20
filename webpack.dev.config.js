@@ -8,5 +8,10 @@ module.exports = createConfig('webpack-dev', {
     hot: true,
     inline: true,
     disableHostCheck: true, // Local development with custom domain
+    historyApiFallback: {
+      rewrites: [
+        { from: /\/eol\/eol_course_email\/static/, to: `/eol/eol_course_email/static/` }
+      ]
+    }
   },
 });
