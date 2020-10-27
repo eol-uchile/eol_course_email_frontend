@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFetchUsers } from '../hooks/getUserData';
+import { useFetchUsers } from '../hooks/useFetchUserData';
+import { Spinner } from '@edx/paragon';
 
 export const NewEmailForm = ({ courseId }) => {
     const { data, loading } = useFetchUsers( courseId );
@@ -8,7 +9,7 @@ export const NewEmailForm = ({ courseId }) => {
         <>
             <h1>Formulario Nuevo Correo</h1>
             <h3>Usuarios </h3>
-            { loading && <p>Cargando...</p> }
+            { loading && <Spinner animation="border" variant="primary" /> }
             <ul>
                 {
                     data.map( (user) => (

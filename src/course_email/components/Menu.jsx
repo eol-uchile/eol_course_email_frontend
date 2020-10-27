@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Button } from '@edx/paragon';
 
 export default function Menu() {
     return (
         <div>
-            <button>Enviar Nuevo Correo</button>
-            <button>Ver Correos Recibidos</button>
-            <button>Ver Correos Enviados</button>
+            <Button>Enviar Nuevo Correo</Button>
+            <Button>Ver Correos Recibidos</Button>
+            <Button>Ver Correos Enviados</Button>
         </div>
     )
 }

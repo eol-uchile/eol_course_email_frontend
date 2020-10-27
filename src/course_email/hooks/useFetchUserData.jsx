@@ -18,7 +18,7 @@ export const useFetchReceivedEmails = ( courseId ) =>  {
                     loading: false
                 });
             }) 
-    }, [ courseId ]);
+    }, [ ]);
 
     return state;
 }
@@ -37,7 +37,7 @@ export const useFetchSendedEmails = ( courseId ) =>  {
                     loading: false
                 });
             }) 
-    }, [ courseId ]);
+    }, [ ]);
 
     return state;
 }
@@ -56,7 +56,7 @@ export const useFetchUsers = ( courseId ) =>  {
                     loading: false
                 });
             }) 
-    }, [ courseId ]);
+    }, [ ]);
 
     return state;
 }
