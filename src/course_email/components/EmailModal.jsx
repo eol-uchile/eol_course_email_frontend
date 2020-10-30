@@ -3,6 +3,8 @@ import { Modal, Button } from '@edx/paragon';
 
 export const EmailModal = ({ email, modalState, setModalState }) => {
 
+    console.log('EmailModal loaded');
+
     const resetModalWrapperState = () => {
         setModalState(false);
     }

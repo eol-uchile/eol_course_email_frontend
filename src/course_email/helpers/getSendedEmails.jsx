@@ -4,6 +4,7 @@
 */
 
 export const getSendedEmails = async( courseId ) => {
+    console.log('getSendedEmails loaded');
     const url = `/courses/${ courseId }/course_emails/sended`;
     const response = await fetch(url, { credentials: "same-origin" });
     if(response.status == 200) {

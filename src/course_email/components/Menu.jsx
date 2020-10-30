@@ -2,6 +2,9 @@ import React from 'react';
 import { Button } from '@edx/paragon';
 
 export default function Menu() {
+
+    console.log('Menu loaded');
+
     return (
         <div>
             <Button>Enviar Nuevo Correo</Button>

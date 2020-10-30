@@ -4,6 +4,8 @@ import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { EmailModal } from './EmailModal'
 export const EmailItem = ( email ) => {
 
+    console.log('EmailItem loaded');
+
     const [modalState, setModalState] = useState(false);
 
     const openModal = () => {

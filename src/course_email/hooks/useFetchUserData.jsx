@@ -13,6 +13,7 @@ export const useFetchReceivedEmails = ( courseId ) =>  {
     useEffect( () => {
         getReceivedEmails( courseId )
             .then( emails => {
+                console.log('useFetchReceivedEmails loaded');
                 setState({
                     data: emails,
                     loading: false
@@ -32,6 +33,7 @@ export const useFetchSendedEmails = ( courseId ) =>  {
     useEffect( () => {
         getSendedEmails( courseId )
             .then( emails => {
+                console.log('useFetchSendedEmails loaded');
                 setState({
                     data: emails,
                     loading: false
@@ -51,6 +53,7 @@ export const useFetchUsers = ( courseId ) =>  {
     useEffect( () => {
         getUsers( courseId )
             .then( users => {
+                console.log('useFetchUsers loaded');
                 setState({
                     data: users,
                     loading: false

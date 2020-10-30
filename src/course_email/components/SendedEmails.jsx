@@ -5,6 +5,7 @@ import { EmailItem } from './EmailItem';
 import { Spinner } from '@edx/paragon';
 
 export const SendedEmails = ({ courseId }) => {
+    console.log('SendedEmails loaded');
     const { data, loading } = useFetchSendedEmails( courseId );
     return (
         <>
