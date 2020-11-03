@@ -8,10 +8,12 @@ import Menu from "./components/Menu";
 import { NewEmailForm } from "./components/NewEmailForm";
 import { ReceivedEmails } from "./components/ReceivedEmails";
 import { SendedEmails } from "./components/SendedEmails";
+import { useResizeIFrame } from "./hooks/useResizeIFrame";
 
 export default function CourseEmailPage() {
+  const state = useResizeIFrame();
   return (
-    <div className="container">
+    <div id="content" className="container">
       <Router>
         <div>
           <Menu />

@@ -10,7 +10,7 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
     }
 
     const body = () => (
-      <div className="row">
+      <div className="row px-2">
         <div className="font-weight-bold col col-3 py-2">
           Fecha
         </div>

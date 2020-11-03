@@ -38,7 +38,7 @@ export const NewEmailForm = () => {
                 <Form.Group id="formGridCheckbox">
                 </Form.Group>
                 <Form.Row>
-                    { loading && <Spinner animation="border" variant="primary" /> }
+                    { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
                     <Form.Group as={Col} controlId="formGridReceiverStudent" className="checkbox-group">
                         <Form.Label className="lead">Destinatarios Estudiantes</Form.Label>
                         <div className="checkbox-input">

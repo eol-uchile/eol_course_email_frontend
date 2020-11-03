@@ -9,9 +9,9 @@ export const ReceivedEmails = () => {
     console.log('ReceivedEmails loaded');
     const { data, loading } = useFetchReceivedEmails( courseId );
     return (
-        <>
-            <h1>Emails Recibidos</h1>
-            { loading && <Spinner animation="border" variant="primary" /> }
+        <div className="rounded-lg shadow-lg py-4 px-5 my-2">
+            <h3>Correos Recibidos</h3>
+            { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
             <div className="email-grid">
                 <div className="row font-weight-bold border-bottom py-2">
                     <div className="col col-3">
@@ -38,6 +38,6 @@ export const ReceivedEmails = () => {
                     ))
                 }
             </div>
-        </>
+        </div>
     )
 }

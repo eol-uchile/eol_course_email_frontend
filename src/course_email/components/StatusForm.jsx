@@ -5,7 +5,7 @@ export const StatusForm = ({status}) => {
     switch (status) {
         case "pending":
             return(
-                <Spinner animation="border" variant="primary" className="mx-auto mt-2 "/>
+                <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/>
             );
         case "fail":
             return(
