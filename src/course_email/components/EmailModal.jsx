@@ -9,31 +9,6 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
         setModalState(false);
     }
 
-    const receiver_users_section = () => {
-        if( email.receiver_users ) {
-          return(
-            <>
-              <div className="font-weight-bold col col-3 py-2">
-                Destinatarios ({ email.receiver_users.length })
-              </div>
-              <div className="text-justify col col-9 py-2">
-                <ol>
-                  {
-                    email.receiver_users.map((user) => {
-                      return(
-                        <li key={ user }>
-                          { user }
-                        </li>
-                      )
-                    })
-                  }
-                </ol>
-              </div>
-            </>
-          );
-        }
-    }
-
     const body = () => (
       <div className="row">
         <div className="font-weight-bold col col-3 py-2">
@@ -64,7 +39,30 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
           { email.message }
         </div>
         
-        { receiver_users_section() }
+        { 
+          email.receiver_users
+          &&
+          (
+            <>
+              <div className="font-weight-bold col col-3 py-2">
+                Destinatarios ({ email.receiver_users.length })
+              </div>
+              <div className="text-justify col col-9 py-2">
+                <ol>
+                  {
+                    email.receiver_users.map((user) => {
+                      return(
+                        <li key={ user }>
+                          { user }
+                        </li>
+                      )
+                    })
+                  }
+                </ol>
+              </div>
+            </>
+          )
+        }
       </div>
     );
 

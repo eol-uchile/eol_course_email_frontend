@@ -30,7 +30,9 @@ export const EmailItem = ( email ) => {
                 <IconButton icon={ faInfo } alt='Ver mayor información del correo' onClick={ openModal } variant="primary"/>
             </div> 
 
-            <EmailModal email={email} modalState={modalState} setModalState={setModalState}/>
+            {
+                modalState && <EmailModal email={email} modalState={modalState} setModalState={setModalState}/>
+            }
 
         </div>
     )

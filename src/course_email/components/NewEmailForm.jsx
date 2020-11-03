@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 import { useFetchUsers } from '../hooks/useFetchUserData';
 import { useForm } from '../hooks/useForm';
 import { Spinner, Form, Button, Col } from '@edx/paragon';
 import { StatusForm } from './StatusForm';
+import { useParams } from 'react-router';
 
 
-export const NewEmailForm = ({ courseId }) => {
+export const NewEmailForm = () => {
+    const { courseId } = useParams();
     console.log('NewEmailForm loaded');
-    const { data, loading } = useFetchUsers( courseId );
+    const { users, loading } = useFetchUsers( courseId );
     const [ values, handleInputChange, handleSubmit] = useForm({
         status: "initialized",
         subjectInput    : "",
@@ -21,7 +22,7 @@ export const NewEmailForm = ({ courseId }) => {
     const formRef = useRef(null)
 
     return (
-        <div className="border border-info-500 rounded-lg p-3 my-2">
+        <div className="rounded-lg shadow-lg py-4 px-5 my-2">
             <h3>Formulario Nuevo Correo </h3>
             <Form ref={formRef} onSubmit={(e)=>handleSubmit(e, formRef.current)}>
 
@@ -42,7 +43,7 @@ export const NewEmailForm = ({ courseId }) => {
                         <Form.Label className="lead">Destinatarios Estudiantes</Form.Label>
                         <div className="checkbox-input">
                             {
-                                data
+                                users
                                 .filter( ({has_role}) => !has_role )
                                 .map( (user) => (
                                     <Form.Check 
@@ -64,7 +65,7 @@ export const NewEmailForm = ({ courseId }) => {
                         <Form.Label className="lead">Destinatarios Staff</Form.Label>
                         <div className="checkbox-input">
                             {
-                                data
+                                users
                                 .filter( ({has_role}) => has_role )
                                 .map( (user) => (
                                     <Form.Check 
@@ -93,8 +94,4 @@ export const NewEmailForm = ({ courseId }) => {
             </Form>
         </div>
     )
-}
-
-NewEmailForm.propTypes = {
-    courseId : PropTypes.string.isRequired,
 }

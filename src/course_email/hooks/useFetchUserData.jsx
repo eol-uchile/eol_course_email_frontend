@@ -44,21 +44,32 @@ export const useFetchSendedEmails = ( courseId ) =>  {
     return state;
 }
 
+var users_cache = [];
+
 export const useFetchUsers = ( courseId ) =>  {
     const [state, setState] = useState({
-        data: [],
+        users: [],
         loading: true
     })
 
     useEffect( () => {
-        getUsers( courseId )
+        if ( users_cache.length != 0 ) {
+            console.log('users cache loaded');
+            setState({
+                users: users_cache,
+                loading: false
+            });
+        } else {
+            getUsers( courseId )
             .then( users => {
                 console.log('useFetchUsers loaded');
+                users_cache = users;
                 setState({
-                    data: users,
+                    users: users,
                     loading: false
                 });
             }) 
+        }
     }, [ ]);
 
     return state;

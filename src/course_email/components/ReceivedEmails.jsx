@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useFetchReceivedEmails } from '../hooks/useFetchUserData';
 import { EmailItem } from './EmailItem';
 import { Spinner } from '@edx/paragon';
+import { useParams } from 'react-router';
 
-export const ReceivedEmails = ({ courseId }) => {
+export const ReceivedEmails = () => {
+    const { courseId } = useParams();
     console.log('ReceivedEmails loaded');
     const { data, loading } = useFetchReceivedEmails( courseId );
     return (
@@ -39,8 +40,4 @@ export const ReceivedEmails = ({ courseId }) => {
             </div>
         </>
     )
-}
-
-ReceivedEmails.propTypes = {
-    courseId : PropTypes.string.isRequired,
 }
