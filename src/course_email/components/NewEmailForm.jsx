@@ -1,29 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useFetchUsers } from '../hooks/useFetchUserData';
 import { useForm } from '../hooks/useForm';
 import { Spinner, Form, Button, Col } from '@edx/paragon';
+import { StatusForm } from './StatusForm';
 
 
 export const NewEmailForm = ({ courseId }) => {
     console.log('NewEmailForm loaded');
     const { data, loading } = useFetchUsers( courseId );
-    const [values, handleInputChange] = useForm({
+    const [ values, handleInputChange, handleSubmit] = useForm({
+        status: "initialized",
         subjectInput    : "",
         messageInput   : "",
         studentsInput: [],
-        staffInput: []
+        staffInput: [],
+        courseId: courseId
     })
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("hola");
-    }
+    const { status } = values;
+    const formRef = useRef(null)
 
     return (
         <div className="border border-info-500 rounded-lg p-3 my-2">
-            <h3>Formulario Nuevo Correo</h3>
-            <Form onSubmit={handleSubmit}>
+            <h3>Formulario Nuevo Correo </h3>
+            <Form ref={formRef} onSubmit={(e)=>handleSubmit(e, formRef.current)}>
 
                 <Form.Group controlId="formGridSubject">
                     <Form.Label className="lead">Asunto</Form.Label>
@@ -49,8 +49,8 @@ export const NewEmailForm = ({ courseId }) => {
                                         type="checkbox" 
                                         className="pl-0"
                                         name="studentsInput"
-                                        id={ user.email }
-                                        key={ user.email }
+                                        id={ user.username }
+                                        key={ user.username }
                                         label={ user.name }
                                         onChange={ handleInputChange }
                                     />
@@ -71,8 +71,8 @@ export const NewEmailForm = ({ courseId }) => {
                                         type="checkbox" 
                                         className="pl-0"
                                         name="staffInput"
-                                        id={ user.email }
-                                        key={ user.email }
+                                        id={ user.username }
+                                        key={ user.username }
                                         label={ user.name }
                                         onChange={ handleInputChange }
                                     />
@@ -86,6 +86,9 @@ export const NewEmailForm = ({ courseId }) => {
                     <Button variant="outline-primary" size="lg" type="submit" className="mx-auto">
                         Submit
                     </Button>
+                </Form.Row>
+                <Form.Row className="form-status">
+                    <StatusForm status={status} />
                 </Form.Row>
             </Form>
         </div>

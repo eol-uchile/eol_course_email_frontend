@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { postSendEmail } from "../helpers/postSendEmail";
+// import { useFetchSendEmail } from "./useFetchSendEmail";
 
 export const useForm = ( initialState = {} ) => {
     const [values, setValues] = useState(initialState);
@@ -16,7 +18,7 @@ export const useForm = ( initialState = {} ) => {
         
     }
 
-    const handleCheckboxChange = ( target) => {
+    const handleCheckboxChange = ( target ) => {
         let target_values = [...values[target.name]];
         if( target.checked ) {
             setValues({
@@ -24,7 +26,7 @@ export const useForm = ( initialState = {} ) => {
                 [ target.name ]: [...target_values, target.id ]
             });
         } else {
-            target_values.splice(target_values.indexOf(target.id),1);
+            target_values.splice(target_values.indexOf(target.id),1); // Remove email from list
             setValues({
                 ...values,
                 [ target.name ]: target_values
@@ -32,5 +34,33 @@ export const useForm = ( initialState = {} ) => {
         }
     }
 
-    return [ values, handleInputChange ];
+    const handleSubmit = (e, formRef) => {
+        e.preventDefault();
+        console.log(e);
+        setValues({
+            ...values,
+            status: "pending"
+        });
+        postSendEmail( values )
+        .then( status => {
+            if (status) {
+                resetForm(formRef, 'success');
+            } else {
+                setValues({
+                    ...values,
+                    status: 'fail'
+                });
+            }
+        }); 
+    }
+
+    const resetForm = (formRef, status='initialized') => {
+        setValues({
+            ...initialState,
+            status: status
+        });
+        formRef.reset();
+    }
+
+    return [ values, handleInputChange, handleSubmit ];
 }
