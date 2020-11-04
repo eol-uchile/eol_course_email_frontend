@@ -6,6 +6,9 @@ export const useForm = ( initialState = {} ) => {
     const [values, setValues] = useState(initialState);
 
     const handleInputChange = ( { target } ) => {
+        /*
+            Handle Input changes
+        */
         console.log("handleInputChange");
         if( target.name === 'studentsInput' || target.name ===  'staffInput' ){
             handleCheckboxChange(target);
@@ -19,6 +22,10 @@ export const useForm = ( initialState = {} ) => {
     }
 
     const handleCheckboxChange = ( target ) => {
+        /*
+            Handle Checkbox Change
+            Add/remove users from State list
+        */
         let target_values = [...values[target.name]];
         if( target.checked ) {
             setValues({
@@ -26,7 +33,7 @@ export const useForm = ( initialState = {} ) => {
                 [ target.name ]: [...target_values, target.id ]
             });
         } else {
-            target_values.splice(target_values.indexOf(target.id),1); // Remove email from list
+            target_values.splice(target_values.indexOf(target.id),1); // Remove user from list
             setValues({
                 ...values,
                 [ target.name ]: target_values
@@ -35,6 +42,9 @@ export const useForm = ( initialState = {} ) => {
     }
 
     const handleSubmit = (e, formRef) => {
+        /*
+            Handle form submit and send Email
+        */
         e.preventDefault();
         console.log(e);
         setValues({
@@ -55,6 +65,9 @@ export const useForm = ( initialState = {} ) => {
     }
 
     const resetForm = (formRef, status='initialized') => {
+        /*
+            Clear form
+        */
         setValues({
             ...initialState,
             status: status

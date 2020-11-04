@@ -1,52 +1,40 @@
 import { useState, useEffect } from "react";
-import { getReceivedEmails } from '../helpers/getReceivedEmails';
-import { getSendedEmails } from '../helpers/getSendedEmails';
 import { getUsers } from '../helpers/getUsers';
 
-
-export const useFetchReceivedEmails = ( courseId ) =>  {
+export const useFetchEmails = ( courseId, getEmails ) =>  {
+    /*
+        Fetch received/sended emails
+    */
     const [state, setState] = useState({
         data: [],
         loading: true
     })
 
     useEffect( () => {
-        getReceivedEmails( courseId )
+        setState({
+            data: [],
+            loading: true
+        });
+        getEmails( courseId )
             .then( emails => {
-                console.log('useFetchReceivedEmails loaded');
+                console.log('emails loaded');
                 setState({
                     data: emails,
                     loading: false
                 });
             }) 
-    }, [ ]);
+    }, [ getEmails ]);
 
     return state;
 }
 
-export const useFetchSendedEmails = ( courseId ) =>  {
-    const [state, setState] = useState({
-        data: [],
-        loading: true
-    })
-
-    useEffect( () => {
-        getSendedEmails( courseId )
-            .then( emails => {
-                console.log('useFetchSendedEmails loaded');
-                setState({
-                    data: emails,
-                    loading: false
-                });
-            }) 
-    }, [ ]);
-
-    return state;
-}
 
 var users_cache = [];
 
 export const useFetchUsers = ( courseId ) =>  {
+    /*
+        Fetch users enrolled
+    */
     const [state, setState] = useState({
         users: [],
         loading: true

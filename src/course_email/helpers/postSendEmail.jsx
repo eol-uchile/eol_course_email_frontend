@@ -1,3 +1,7 @@
+/* 
+* Async function that calls eol_course_email api 
+* It will send the email to all destinataries
+*/
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
 export const postSendEmail = async( formData ) => {

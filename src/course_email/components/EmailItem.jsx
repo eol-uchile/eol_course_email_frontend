@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { IconButton } from '@edx/paragon';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { EmailModal } from './EmailModal'
-export const EmailItem = ( email ) => {
+export const EmailItem = ( { email } ) => {
 
     console.log('EmailItem loaded');
 
     const [modalState, setModalState] = useState(false);
 
-    const openModal = () => {
-        setModalState(true);
-    }
+    const openModal = () => setModalState(true);
 
     return (
         <div className="row border-bottom">
@@ -36,4 +35,8 @@ export const EmailItem = ( email ) => {
 
         </div>
     )
+}
+
+EmailItem.propTypes = {
+    email       : PropTypes.object.isRequired
 }

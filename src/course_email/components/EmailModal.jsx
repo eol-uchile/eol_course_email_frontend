@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from '@edx/paragon';
 
 export const EmailModal = ({ email, modalState, setModalState }) => {
 
     console.log('EmailModal loaded');
 
-    const resetModalWrapperState = () => {
-        setModalState(false);
-    }
+    const resetModalWrapperState = () => setModalState(false);
 
     const body = () => (
       <div className="row px-2">
@@ -79,4 +78,10 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
           dialogClassName="modal-lg"
         />
     )
+}
+
+EmailModal.propTypes = {
+  email         : PropTypes.object.isRequired,
+  modalState    : PropTypes.bool.isRequired,
+  setModalState : PropTypes.func.isRequired
 }

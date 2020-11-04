@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 var lastHeight;
 var lastWidth;
 
-
 export const useResizeIFrame = () => {
     useEffect(() => {
+        // Verify iframe
         if (window !== window.parent) {
             document.body.className += ' view-in-mfe';
             lastHeight = window.offsetHeight;

@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 import Menu from "./components/Menu";
 import { NewEmailForm } from "./components/NewEmailForm";
-import { ReceivedEmails } from "./components/ReceivedEmails";
-import { SendedEmails } from "./components/SendedEmails";
+import { EmailGrid } from "./components/EmailGrid";
 import { useResizeIFrame } from "./hooks/useResizeIFrame";
+import { getReceivedEmails } from "./helpers/getReceivedEmails";
+import { getSendedEmails } from "./helpers/getSendedEmails";
 
 export default function CourseEmailPage() {
-  const state = useResizeIFrame();
+  useResizeIFrame(); // Resize Iframe on height changes
   return (
     <div id="content" className="container">
       <Router>
@@ -19,13 +20,13 @@ export default function CourseEmailPage() {
           <Menu />
           <Switch>
             <Route exact path="/eol/eol_course_email/static/:courseId">
-              <ReceivedEmails />
+              <EmailGrid getEmails={getReceivedEmails} title="Correos Recibidos" />
             </Route>
             <Route exact path="/eol/eol_course_email/static/sended/:courseId">
-              <SendedEmails />
+              <EmailGrid getEmails={getSendedEmails} title="Correos Enviados"/>
             </Route>
             <Route exact path="/eol/eol_course_email/static/received/:courseId">
-              <ReceivedEmails />
+              <EmailGrid getEmails={getReceivedEmails} title="Correos Recibidos" />
             </Route>
             <Route exact path="/eol/eol_course_email/static/new/:courseId">
               <NewEmailForm />

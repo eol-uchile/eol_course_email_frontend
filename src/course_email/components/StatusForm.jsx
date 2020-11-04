@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Spinner, Alert} from '@edx/paragon';
 
 export const StatusForm = ({status}) => {
@@ -26,4 +27,8 @@ export const StatusForm = ({status}) => {
                 </>
             );
     }
+}
+
+StatusForm.propTypes = {
+    status       : PropTypes.string.isRequired
 }
