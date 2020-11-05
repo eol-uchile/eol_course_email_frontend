@@ -41,12 +41,11 @@ export const useForm = ( initialState = {} ) => {
         }
     }
 
-    const handleSubmit = (e, formRef) => {
+    const handleSubmit = (e) => {
         /*
             Handle form submit and send Email
         */
         e.preventDefault();
-        console.log(e);
         setValues({
             ...values,
             status: "pending"
@@ -54,7 +53,7 @@ export const useForm = ( initialState = {} ) => {
         postSendEmail( values )
         .then( status => {
             if (status) {
-                resetForm(formRef, 'success');
+                resetForm('success');
             } else {
                 setValues({
                     ...values,
@@ -64,7 +63,7 @@ export const useForm = ( initialState = {} ) => {
         }); 
     }
 
-    const resetForm = (formRef, status='initialized') => {
+    const resetForm = (status='initialized') => {
         /*
             Clear form
         */
@@ -72,7 +71,6 @@ export const useForm = ( initialState = {} ) => {
             ...initialState,
             status: status
         });
-        formRef.reset();
     }
 
     return [ values, handleInputChange, handleSubmit ];

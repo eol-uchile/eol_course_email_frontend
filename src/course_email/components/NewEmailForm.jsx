@@ -18,21 +18,20 @@ export const NewEmailForm = () => {
         staffInput: [],
         courseId: courseId
     })
-    const { status } = values;
-    const formRef = useRef(null)
+    const { status, subjectInput, messageInput, studentsInput, staffInput } = values;
 
     return (
         <div className="rounded-lg shadow-lg py-4 px-5 my-2">
             <h3>Formulario Nuevo Correo </h3>
-            <Form ref={formRef} onSubmit={(e)=>handleSubmit(e, formRef.current)}>
+            <Form onSubmit={handleSubmit}>
 
                 <Form.Group controlId="formGridSubject">
                     <Form.Label className="lead">Asunto</Form.Label>
-                    <Form.Control required placeholder="Asunto del correo" aria-describedby="subjectInput" name="subjectInput" onChange={ handleInputChange }/>
+                    <Form.Control required placeholder="Asunto del correo" aria-describedby="subjectInput" name="subjectInput" onChange={ handleInputChange } value={subjectInput}/>
                 </Form.Group>
                 <Form.Group controlId="formGridMessage">
                     <Form.Label className="lead">Mensaje</Form.Label>
-                    <Form.Control required as="textarea" placeholder="Mensaje del correo" aria-describedby="messageInput" name="messageInput" onChange={ handleInputChange }/>
+                    <Form.Control required as="textarea" placeholder="Mensaje del correo" aria-describedby="messageInput" name="messageInput" onChange={ handleInputChange } value={messageInput}/>
                 </Form.Group>
                 <hr/>
                 <Form.Group id="formGridCheckbox">
@@ -54,6 +53,7 @@ export const NewEmailForm = () => {
                                         key={ user.username }
                                         label={ user.name }
                                         onChange={ handleInputChange }
+                                        checked={ studentsInput.includes(user.username) }
                                     />
                                 ))
                             }
@@ -76,6 +76,7 @@ export const NewEmailForm = () => {
                                         key={ user.username }
                                         label={ user.name }
                                         onChange={ handleInputChange }
+                                        checked={ staffInput.includes(user.username) }
                                     />
                                 ))
                             }
