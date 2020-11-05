@@ -1,5 +1,10 @@
 // General
 
+html {
+  /* Modal scroll */
+  scroll-behavior: smooth;
+}
+
 .btn, .btn:focus:before {
     border-radius: .3rem !important;
 }

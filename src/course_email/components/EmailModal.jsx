@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from '@edx/paragon';
 
@@ -7,6 +7,10 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
     console.log('EmailModal loaded');
 
     const resetModalWrapperState = () => setModalState(false);
+
+    const modalRef = useRef(null)
+    // IFrame modal is stuck at the top so we have to scroll page. 
+    useLayoutEffect(() => window.parent.parent.scrollTo(0, modalRef.current.modalBodyRef.current.offsetTop), [ ]);
 
     const body = () => (
       <div className="row px-2">
@@ -67,6 +71,7 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
 
     return (
         <Modal
+          ref={ modalRef }
           open={ modalState }
           title="Detalle del correo"
           body={ body() }
