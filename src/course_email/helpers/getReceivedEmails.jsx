@@ -14,7 +14,7 @@ export const getReceivedEmails = async( courseId ) => {
                 subject : e.subject,
                 message : e.message,
                 sender  : e.sender_user__profile__name,
-                date    : (new Date(e.created_at.$date)).toLocaleString()
+                date    : (new Date(e.created_at.$date)).toLocaleString('es-CL')
             }
         });
         return emails;
