@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton } from '@edx/paragon';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
-import { EmailModal } from './EmailModal'
+import { EmailModal } from './EmailModal';
 export const EmailItem = ( { email } ) => {
 
     console.log('EmailItem loaded');

@@ -10,14 +10,20 @@ export const StatusForm = ({status}) => {
             );
         case "fail":
             return(
-                <Alert variant="danger" className="mx-4 mt-2 text-center w-100">
+                <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">
                     Error al enviar correo. Intentar nuevamente.
                 </Alert>
             );
         case "success":
             return(
-                <Alert variant="success" className="mx-4 mt-2 text-center w-100">
-                    Correo enviado.
+                <Alert variant="success" className="mx-4 mt-3 text-center w-100 shadow">
+                    <strong>Tu mensaje fue procesado con éxito para ser enviado</strong>.<br/>Los destinatarios comenzarán a recibir el correo en los próximos minutos.
+                </Alert>
+            );
+        case "empty-list":
+            return(
+                <Alert variant="warning" className="mx-4 mt-3 text-center w-100 shadow">
+                    Debes selecionar <strong>al menos un</strong> destinatario.
                 </Alert>
             );
     

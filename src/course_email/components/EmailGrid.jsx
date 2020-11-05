@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EmailItem } from './EmailItem';
+import { EmptyGrid } from './EmptyGrid';
 import { Spinner } from '@edx/paragon';
 import { useParams } from 'react-router';
 import { useFetchEmails } from '../hooks/useFetchUserData';
 
 export const EmailGrid = ( { getEmails, title } ) => {
-    const { courseId } = useParams();
     console.log(`${title} loaded`);
+
+    const { courseId } = useParams();
     const { data, loading } = useFetchEmails( courseId, getEmails );
-    return (
-        <div className="rounded-lg shadow-lg py-4 px-5 my-2">
-            <h3>{title}</h3>
-            { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
+    
+    const gridContent = () => {
+        if (data.length == 0) {
+            return (
+                <EmptyGrid title={ title } />
+            );
+        }
+        return (
             <div className="email-grid">
                 <div className="row font-weight-bold border-bottom py-2">
                     <div className="col col-3">
@@ -39,6 +45,15 @@ export const EmailGrid = ( { getEmails, title } ) => {
                     ))
                 }
             </div>
+        )
+    }
+
+
+    return (
+        <div className="rounded-lg shadow-lg py-4 px-5 my-2">
+            <h3>{title}</h3>
+            { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
+            { !loading && gridContent() }
         </div>
     )
 }

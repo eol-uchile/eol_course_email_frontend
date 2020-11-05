@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { postSendEmail } from "../helpers/postSendEmail";
-// import { useFetchSendEmail } from "./useFetchSendEmail";
 
 export const useForm = ( initialState = {} ) => {
     const [values, setValues] = useState(initialState);
@@ -46,21 +45,41 @@ export const useForm = ( initialState = {} ) => {
             Handle form submit and send Email
         */
         e.preventDefault();
-        setValues({
-            ...values,
-            status: "pending"
-        });
-        postSendEmail( values )
-        .then( status => {
-            if (status) {
-                resetForm('success');
-            } else {
-                setValues({
-                    ...values,
-                    status: 'fail'
-                });
-            }
-        }); 
+        if( validateInputs() ) {
+            setValues({
+                ...values,
+                status: "pending"
+            });
+            postSendEmail( values )
+                .then( status => {
+                    if (status) {
+                        resetForm('success');
+                    } else {
+                        setValues({
+                            ...values,
+                            status: 'fail'
+                        });
+                    }
+            }); 
+
+        }
+        
+        
+    }
+
+    const validateInputs = () => {
+        /*
+            Validate list length
+        */
+        const { studentsInput, staffInput } = values;
+        if(studentsInput.length + staffInput.length == 0) {
+            setValues({
+                ...values,
+                status: "empty-list"
+            });
+            return false;
+        }
+        return true;
     }
 
     const resetForm = (status='initialized') => {

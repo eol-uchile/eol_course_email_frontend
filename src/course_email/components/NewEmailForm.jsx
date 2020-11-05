@@ -4,6 +4,8 @@ import { useForm } from '../hooks/useForm';
 import { Spinner, Form, Button, Col } from '@edx/paragon';
 import { StatusForm } from './StatusForm';
 import { useParams } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 
 export const NewEmailForm = () => {
@@ -85,8 +87,8 @@ export const NewEmailForm = () => {
                     </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                    <Button variant="outline-primary" size="lg" type="submit" className="mx-auto">
-                        Submit
+                    <Button variant="outline-primary shadow-lg" size="lg" type="submit" className="mx-auto" disabled={status=='pending'}>
+                        <FontAwesomeIcon icon={faPaperPlane} className="mr-2" /> Enviar Correo
                     </Button>
                 </Form.Row>
                 <Form.Row className="form-status">
