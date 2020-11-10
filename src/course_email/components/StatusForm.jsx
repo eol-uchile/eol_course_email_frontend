@@ -23,7 +23,7 @@ export const StatusForm = ({status}) => {
         case "empty-list":
             return(
                 <Alert variant="warning" className="mx-4 mt-3 text-center w-100 shadow">
-                    Debes selecionar <strong>al menos un</strong> destinatario.
+                    <strong>Debes seleccionar al menos un destinatario.</strong>
                 </Alert>
             );
     

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useFetchUsers } from '../hooks/useFetchUserData';
 import { useForm } from '../hooks/useForm';
 import { Spinner, Form, Button, Col } from '@edx/paragon';

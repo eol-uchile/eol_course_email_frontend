@@ -54,11 +54,17 @@
   },
   "devDependencies": {
     "@edx/frontend-build": "5.3.2",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
+    "@testing-library/user-event": "^12.2.0",
     "codecov": "3.7.2",
     "es-check": "5.1.1",
+    "eslint-plugin-testing-library": "^3.10.0",
     "glob": "7.1.6",
+    "history": "^5.0.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "reactifex": "1.1.1"
   }
 }
