@@ -7,11 +7,7 @@ jest.mock('../hooks/useFetchUserData');
 
 describe('Testing <NewEmailForm /> App Component', () => {
 
-    const mock_router_path = {
-        params: {
-            courseId: 'foo_id',
-        },
-    };
+    const courseId = 'foo_id';
 
     useFetchUsers.mockReturnValue({
         users : [],
@@ -23,7 +19,7 @@ describe('Testing <NewEmailForm /> App Component', () => {
     });
 
     test('Load <NewEmailForm /> correctly', () => {
-        renderWithRouter(<NewEmailForm match={mock_router_path} />);
+        renderWithRouter(<NewEmailForm courseId={courseId} />);
         expect( screen ).toMatchSnapshot();
 
     });
@@ -33,7 +29,7 @@ describe('Testing <NewEmailForm /> App Component', () => {
             users : [],
             loading : true
         });
-        renderWithRouter(<NewEmailForm match={mock_router_path} />);
+        renderWithRouter(<NewEmailForm courseId={courseId} />);
         expect(screen.getByText((content, element) => 
             element.classList.contains(`spinner-border`) && content == ''
         ));
@@ -65,7 +61,7 @@ describe('Testing <NewEmailForm /> App Component', () => {
             loading : false
         });
 
-        renderWithRouter(<NewEmailForm match={mock_router_path} />);
+        renderWithRouter(<NewEmailForm courseId={courseId} />);
         expect( screen.getByText('USER PROFILE NAME 1'));
         expect( screen.getByText('USER PROFILE NAME 2'));
         expect( screen.getByText('USER PROFILE NAME 3') );

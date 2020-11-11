@@ -9,11 +9,7 @@ jest.mock('../hooks/useFetchUserData');
 
 describe('Testing <EmailGrid /> App Component', () => {
 
-    const mock_router_path = {
-        params: {
-            courseId: 'foo_id',
-        },
-    };
+    const courseId = 'foo_id';
 
     useFetchEmails.mockReturnValue({
         data : [],
@@ -25,19 +21,19 @@ describe('Testing <EmailGrid /> App Component', () => {
     });
 
     test('Load <EmailGrid /> receivedEmails correctly', () => {
-        renderWithRouter(<EmailGrid match={mock_router_path} getEmails={getReceivedEmails} title="Correos Recibidos" />);
+        renderWithRouter(<EmailGrid courseId={courseId} getEmails={getReceivedEmails} title="Correos Recibidos" />);
         expect( screen ).toMatchSnapshot();
 
     });
     
     test('Load <EmailGrid /> sendedEmails correctly', () => {
-        renderWithRouter(<EmailGrid match={mock_router_path} getEmails={getSendedEmails} title="Correos Enviados" />);
+        renderWithRouter(<EmailGrid courseId={courseId} getEmails={getSendedEmails} title="Correos Enviados" />);
         expect( screen ).toMatchSnapshot();
 
     });
 
     test('Show loading spinner ', () => {
-        renderWithRouter(<EmailGrid match={mock_router_path} getEmails={getSendedEmails} title="Correos Enviados" />);
+        renderWithRouter(<EmailGrid courseId={courseId} getEmails={getSendedEmails} title="Correos Enviados" />);
         expect(screen.getByText((content, element) => 
             element.classList.contains(`spinner-border`) && content == ''
         ));
@@ -48,7 +44,7 @@ describe('Testing <EmailGrid /> App Component', () => {
             data : [],
             loading : false
         });
-        renderWithRouter(<EmailGrid match={mock_router_path} getEmails={getSendedEmails} title="Correos Enviados" />);
+        renderWithRouter(<EmailGrid courseId={courseId} getEmails={getSendedEmails} title="Correos Enviados" />);
         expect(screen.getAllByText(`Al parecer no tienes correos enviados.`));
     })
 
@@ -68,7 +64,7 @@ describe('Testing <EmailGrid /> App Component', () => {
             }],
             loading : false
         });
-        renderWithRouter(<EmailGrid match={mock_router_path} getEmails={getReceivedEmails} title="Correos Recibidos" />);
+        renderWithRouter(<EmailGrid courseId={courseId} getEmails={getReceivedEmails} title="Correos Recibidos" />);
 
         expect( screen.getByText('Subject1 text'));
         expect( screen.getByText('Sender1 text'));

@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { EmailItem } from './EmailItem';
 import { EmptyGrid } from './EmptyGrid';
 import { Spinner } from '@edx/paragon';
-import { useParams } from 'react-router';
 import { useFetchEmails } from '../hooks/useFetchUserData';
 
-export const EmailGrid = ( { getEmails, title } ) => {
+export const EmailGrid = ( { getEmails, title, courseId } ) => {
     console.log(`${title} loaded`);
 
-    const { courseId } = useParams();
     const { data, loading } = useFetchEmails( courseId, getEmails );
     
     const gridContent = () => {
@@ -60,5 +58,6 @@ export const EmailGrid = ( { getEmails, title } ) => {
 
 EmailGrid.propTypes = {
     getEmails   : PropTypes.func.isRequired,
-    title       : PropTypes.string.isRequired
+    title       : PropTypes.string.isRequired,
+    courseId       : PropTypes.string.isRequired
 }

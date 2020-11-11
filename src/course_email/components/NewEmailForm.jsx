@@ -1,15 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFetchUsers } from '../hooks/useFetchUserData';
 import { useForm } from '../hooks/useForm';
 import { Spinner, Form, Button, Col } from '@edx/paragon';
 import { StatusForm } from './StatusForm';
-import { useParams } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 
-export const NewEmailForm = () => {
-    const { courseId } = useParams();
+export const NewEmailForm = ( { courseId } ) => {
     console.log('NewEmailForm loaded');
     const { users, loading } = useFetchUsers( courseId );
     const [ values, handleInputChange, handleSubmit] = useForm({
@@ -97,4 +96,8 @@ export const NewEmailForm = () => {
             </Form>
         </div>
     )
+}
+
+NewEmailForm.propTypes = {
+    courseId       : PropTypes.string.isRequired
 }
