@@ -13,8 +13,7 @@ export const getUsers = async( courseId ) => {
             return {
                 username    : u.username,
                 name        : u.profile__name,
-                has_role    : u.has_role,
-                email       : u.email
+                has_role    : u.has_role
             }
         });
         return users;
