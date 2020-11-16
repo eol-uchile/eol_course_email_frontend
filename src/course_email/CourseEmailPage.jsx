@@ -19,7 +19,7 @@ export default function CourseEmailPage() {
     <div id="content" className="container">
       <HashRouter>
         <div>
-          <Menu/>
+          <Menu courseId={courseId}/>
           <Switch>
             <Route exact path="/eol/eol_course_email/static/sended/">
               <EmailGrid getEmails={getSendedEmails} title="Correos Enviados" courseId={ courseId }/>

@@ -1,5 +1,29 @@
 import { useState, useEffect } from "react";
+import { getUserEmail } from "../helpers/getUserEmail";
 import { getUsers } from '../helpers/getUsers';
+
+export const useFetchUserEmail = ( courseId ) =>  {
+    /*
+        Fetch user email
+    */
+    const [state, setState] = useState({
+        email: "",
+        loading: true
+    })
+
+    useEffect( () => {
+        getUserEmail( courseId )
+        .then( email => {
+            console.log('useFetchUserEmail loaded');
+            setState({
+                email: email,
+                loading: false
+            });
+        }) 
+    }, [ ]);
+
+    return state;
+}
 
 export const useFetchEmails = ( courseId, getEmails ) =>  {
     /*
