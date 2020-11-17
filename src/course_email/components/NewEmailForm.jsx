@@ -24,7 +24,9 @@ export const NewEmailForm = ( { courseId } ) => {
         <div className="rounded-lg shadow-lg py-4 px-5 my-2">
             <h3>Formulario Nuevo Correo </h3>
             <Form onSubmit={handleSubmit}>
-
+                <Form.Row className="form-status">
+                    <StatusForm status={status} />
+                </Form.Row>
                 <Form.Group controlId="formGridSubject">
                     <Form.Label className="lead">Asunto</Form.Label>
                     <Form.Control required placeholder="Asunto del correo" aria-describedby="subjectInput" name="subjectInput" onChange={ handleInputChange } value={subjectInput}/>
@@ -88,9 +90,6 @@ export const NewEmailForm = ( { courseId } ) => {
                     <Button variant="outline-primary shadow-lg" size="lg" type="submit" className="mx-auto" disabled={status=='pending'}>
                         <FontAwesomeIcon icon={faPaperPlane} className="mr-2" /> Enviar Correo
                     </Button>
-                </Form.Row>
-                <Form.Row className="form-status">
-                    <StatusForm status={status} />
                 </Form.Row>
             </Form>
         </div>
