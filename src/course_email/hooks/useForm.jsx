@@ -51,13 +51,13 @@ export const useForm = ( initialState = {} ) => {
                 status: "pending"
             });
             postSendEmail( values )
-                .then( status => {
+                .then( ({ status, status_text }) => {
                     if (status) {
-                        resetForm('success');
+                        resetForm(status_text);
                     } else {
                         setValues({
                             ...values,
-                            status: 'fail'
+                            status: status_text
                         });
                     }
             }); 

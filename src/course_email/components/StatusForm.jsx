@@ -8,6 +8,12 @@ export const StatusForm = ({status}) => {
             return(
                 <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/>
             );
+        case "ratelimit":
+            return(
+                <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">
+                    Error al enviar correo. <strong>Has superado el límite de correos por minuto y deberás esperar un momento para volver enviar correos.</strong>
+                </Alert>
+            );
         case "fail":
             return(
                 <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">

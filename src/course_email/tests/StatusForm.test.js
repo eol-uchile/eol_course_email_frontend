@@ -25,6 +25,12 @@ describe('Testing <StatusForm /> App Component', () => {
 
     })
 
+    test('Show fail ratelimit message correctly', () => {
+        render(<StatusForm status="ratelimit" />);
+        expect(screen.getByText('Has superado el límite de correos por minuto y deberás esperar un momento para volver enviar correos.')).toBeInTheDocument();
+
+    })
+
     test('Show success message correctly', () => {
         render(<StatusForm status="success" />);
         expect(screen.getByText('Tu mensaje fue procesado con éxito para ser enviado')).toBeInTheDocument();

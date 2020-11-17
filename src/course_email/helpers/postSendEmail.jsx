@@ -9,11 +9,25 @@ export const postSendEmail = async( formData ) => {
     const response = await getAuthenticatedHttpClient()
         .post(url, formData, 'json')
         .then(({status}) => {
-            return status == 201;
+            return {
+                "status"    : status == 201,
+                "status_text"   : "success"
+            }
         })
-        .catch(error => {
-            console.log(error);
-            return false;
+        .catch( (error) => {
+            return {
+                "status"    : false,
+                "status_text"   : ERROR_MESSAGES(error.customAttributes?.httpErrorStatus),
+            }
         });
     return response;
 };
+
+const ERROR_MESSAGES = (code=400) => {
+    switch (code) {
+        case 403:
+            return "ratelimit";
+        default:
+            return "fail";
+    }
+}
