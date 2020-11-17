@@ -4,7 +4,6 @@
 */
 
 export const getUserEmail = async( courseId ) => {
-    console.log('getUserEmail loaded');
     const url = `/courses/${ courseId }/course_emails/user_email`;
     const response = await fetch(url, { credentials: "same-origin" });
     if(response.status == 200) {

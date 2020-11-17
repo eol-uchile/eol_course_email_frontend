@@ -14,7 +14,6 @@ export const useFetchUserEmail = ( courseId ) =>  {
     useEffect( () => {
         getUserEmail( courseId )
         .then( email => {
-            console.log('useFetchUserEmail loaded');
             setState({
                 email: email,
                 loading: false
@@ -41,7 +40,6 @@ export const useFetchEmails = ( courseId, getEmails ) =>  {
         });
         getEmails( courseId )
             .then( emails => {
-                console.log('emails loaded');
                 setState({
                     data: emails,
                     loading: false
@@ -66,7 +64,6 @@ export const useFetchUsers = ( courseId ) =>  {
 
     useEffect( () => {
         if ( users_cache.length != 0 ) {
-            console.log('users cache loaded');
             setState({
                 users: users_cache,
                 loading: false
@@ -74,7 +71,6 @@ export const useFetchUsers = ( courseId ) =>  {
         } else {
             getUsers( courseId )
             .then( users => {
-                console.log('useFetchUsers loaded');
                 users_cache = users;
                 setState({
                     users: users,

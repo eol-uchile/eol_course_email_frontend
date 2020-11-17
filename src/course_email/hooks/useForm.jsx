@@ -8,7 +8,6 @@ export const useForm = ( initialState = {} ) => {
         /*
             Handle Input changes
         */
-        console.log("handleInputChange");
         if( target.name === 'studentsInput' || target.name ===  'staffInput' ){
             handleCheckboxChange(target);
         } else {

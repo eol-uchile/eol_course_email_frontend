@@ -6,7 +6,6 @@ import { Spinner } from '@edx/paragon';
 import { useFetchEmails } from '../hooks/useFetchUserData';
 
 export const EmailGrid = ( { getEmails, title, courseId } ) => {
-    console.log(`${title} loaded`);
 
     const { data, loading } = useFetchEmails( courseId, getEmails );
     

@@ -9,7 +9,6 @@ import { useFetchUserEmail } from '../hooks/useFetchUserData';
 
 export default function Menu({ courseId }) {
     const { email, loading } = useFetchUserEmail(courseId);
-    console.log('Menu loaded');
 
     return (
         <div className="my-2">

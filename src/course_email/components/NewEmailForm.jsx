@@ -9,7 +9,6 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 
 export const NewEmailForm = ( { courseId } ) => {
-    console.log('NewEmailForm loaded');
     const { users, loading } = useFetchUsers( courseId );
     const [ values, handleInputChange, handleSubmit] = useForm({
         status: "initialized",

@@ -4,7 +4,6 @@
 */
 
 export const getReceivedEmails = async( courseId ) => {
-    console.log('getReceivedEmails loaded');
     const url = `/courses/${ courseId }/course_emails/received`;
     const response = await fetch(url, { credentials: "same-origin" });
     if(response.status == 200) {

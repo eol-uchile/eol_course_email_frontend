@@ -28,7 +28,6 @@ export const useResizeIFrame = () => {
 
 
 const dispatchResizeMessage = (event) => {
-    console.log("dispatchResizeMessage");
     // Note: event is actually an Array of MutationRecord objects
     // when fired from the MutationObserver
     var eventType = event.type || 'mutate';
