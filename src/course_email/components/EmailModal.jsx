@@ -22,7 +22,7 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
         <div className="font-weight-bold col col-3 py-2">
           Enviado por
         </div>
-        <div className="col col-9 py-2">
+        <div className="col col-9 py-2 text-capitalize">
           { email.sender }
         </div> 
 
@@ -53,8 +53,8 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
                   {
                     email.receiver_users.map((user) => {
                       return(
-                        <li key={ user }>
-                          { user }
+                        <li key={ user } className="text-capitalize">
+                          { user.toLowerCase() }
                         </li>
                       )
                     })
