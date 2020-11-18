@@ -15,7 +15,7 @@ export const EmailItem = ( { email } ) => {
                 { email.date }
             </div>
                 
-            <div className="col col-3 pt-2">
+            <div className="col col-3 pt-2 email-sender">
                 { email.sender }
             </div>
                 

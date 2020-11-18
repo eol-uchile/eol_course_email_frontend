@@ -11,7 +11,7 @@ export const getUsers = async( courseId ) => {
         const users = data.map( u => {
             return {
                 username    : u.username,
-                name        : u.profile__name,
+                name        : u.profile__name.toLowerCase(),
                 has_role    : u.has_role
             }
         });

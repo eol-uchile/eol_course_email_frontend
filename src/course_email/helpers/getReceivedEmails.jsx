@@ -12,7 +12,7 @@ export const getReceivedEmails = async( courseId ) => {
             return {
                 subject : e.subject,
                 message : e.message,
-                sender  : e.sender_user__profile__name,
+                sender  : e.sender_user__profile__name.toLowerCase(),
                 date    : (new Date(e.created_at.$date)).toLocaleString('es-CL')
             }
         });
