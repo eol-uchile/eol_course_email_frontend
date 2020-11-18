@@ -11,7 +11,7 @@ export const StatusForm = ({status}) => {
         case "ratelimit":
             return(
                 <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">
-                    Error al enviar correo. <strong>Has superado el límite de correos por minuto y deberás esperar un momento para volver enviar correos.</strong>
+                    <strong>Has enviado muchos correos, por favor intenta nuevamente en unos minutos.</strong>
                 </Alert>
             );
         case "fail":
