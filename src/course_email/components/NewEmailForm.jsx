@@ -41,7 +41,7 @@ export const NewEmailForm = ( { courseId } ) => {
                 <Form.Row>
                     { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
                     <Form.Group as={Col} controlId="formGridReceiverStudent" className="checkbox-group">
-                        <Form.Label className="lead">Destinatarios Estudiantes</Form.Label>
+                        <Form.Label className="lead">Destinatarios 'Estudiantes'</Form.Label>
                         <div className="checkbox-input">
                             {
                                 users
@@ -64,7 +64,7 @@ export const NewEmailForm = ( { courseId } ) => {
                     </Form.Group>
                     
                     <Form.Group as={Col} controlId="formGridReceiverStaff" className="checkbox-group">
-                        <Form.Label className="lead">Destinatarios Staff</Form.Label>
+                        <Form.Label className="lead">Destinatarios 'Equipo docente'</Form.Label>
                         <div className="checkbox-input">
                             {
                                 users
