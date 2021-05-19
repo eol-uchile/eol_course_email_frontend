@@ -44,7 +44,7 @@ export const useForm = ( initialState = {} ) => {
             Handle form submit and send Email
         */
         e.preventDefault();
-        window.parent.parent.scrollTo(0, 150); // Scroll to top (status info)
+        window.parent.scrollTo(0, 150); // Scroll to top (status info)
         if( validateInputs() ) {
             setValues({
                 ...values,

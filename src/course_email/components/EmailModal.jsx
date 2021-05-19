@@ -8,7 +8,7 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
 
     const modalRef = useRef(null)
     // IFrame modal is stuck at the top so we have to scroll page. 
-    useLayoutEffect(() => window.parent.parent.scrollTo(0, modalRef.current.modalBodyRef.current.offsetTop), [ ]);
+    useLayoutEffect(() => window.parent.scrollTo(0, modalRef.current.modalBodyRef.current.offsetTop), [ ]);
 
     const body = () => (
       <div className="row px-2">
