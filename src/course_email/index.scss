@@ -62,6 +62,15 @@ html {
 
 // New Email Form
 
+
+
+input[type=file] {
+  cursor: pointer;
+} 
+// .custom-file-label::after {
+//   content: "Buscar" !important;
+// }
+
 .form-group.checkbox-group {
     background-color: #fff;
     display: block;

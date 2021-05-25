@@ -10,15 +10,16 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 export const NewEmailForm = ( { courseId } ) => {
     const { users, loading } = useFetchUsers( courseId );
-    const [ values, handleInputChange, handleSubmit] = useForm({
-        status: "initialized",
+    const [ values, handleInputChange, handleFileChange, handleSubmit] = useForm({
+        status          : "initialized",
         subjectInput    : "",
-        messageInput   : "",
-        studentsInput: [],
-        staffInput: [],
-        courseId: courseId
+        messageInput    : "",
+        fileInput      : null,
+        studentsInput   : [],
+        staffInput      : [],
+        courseId        : courseId
     })
-    const { status, subjectInput, messageInput, studentsInput, staffInput } = values;
+    const { status, subjectInput, messageInput, fileInput, studentsInput, staffInput } = values;
 
     return (
         <div className="rounded-lg shadow-lg py-4 px-5 my-2">
@@ -35,9 +36,17 @@ export const NewEmailForm = ( { courseId } ) => {
                     <Form.Label className="lead">Mensaje</Form.Label>
                     <Form.Control required as="textarea" placeholder="Mensaje del correo" aria-describedby="messageInput" name="messageInput" onChange={ handleInputChange } value={messageInput}/>
                 </Form.Group>
-                <hr/>
-                <Form.Group id="formGridCheckbox">
+                <Form.Group controlId="formGridFile">
+                    <Form.Label className="lead">Adjuntar Archivo (opcional)</Form.Label>
+                    <Form.File 
+                        name="fileInput" 
+                        label={ !fileInput ? "Selecciona un archivo (max 10mb)" : fileInput.name }
+                        data-browse="Buscar"
+                        onChange={ handleFileChange } 
+                        custom
+                    />
                 </Form.Group>
+                <hr/>
                 <Form.Row>
                     { loading && <Spinner animation="border" variant="primary" className="d-flex mx-auto mt-2 "/> }
                     <Form.Group as={Col} controlId="formGridReceiverStudent" className="checkbox-group">

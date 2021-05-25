@@ -19,6 +19,17 @@ export const useForm = ( initialState = {} ) => {
         
     }
 
+    const handleFileChange = ( { target } ) => {
+        /*
+            Handle File Change
+        */
+        setValues({
+            ...values,
+            [ target.name ]: target.files[0] 
+        })
+        
+    }
+
     const handleCheckboxChange = ( target ) => {
         /*
             Handle Checkbox Change
@@ -92,5 +103,5 @@ export const useForm = ( initialState = {} ) => {
         });
     }
 
-    return [ values, handleInputChange, handleSubmit ];
+    return [ values, handleInputChange, handleFileChange, handleSubmit ];
 }
