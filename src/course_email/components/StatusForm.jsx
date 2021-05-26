@@ -14,6 +14,12 @@ export const StatusForm = ({status}) => {
                     <strong>Has enviado muchos correos, por favor intenta nuevamente en unos minutos.</strong>
                 </Alert>
             );
+        case "maxsize":
+            return(
+                <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">
+                    <strong>El archivo que intentas enviar excede el tamaño máximo permitido. Para estos casos, te recomendamos compartir un enlace al archivo en Google Drive.</strong>
+                </Alert>
+            );
         case "fail":
             return(
                 <Alert variant="danger" className="mx-4 mt-3 text-center w-100 shadow">

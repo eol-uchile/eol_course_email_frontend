@@ -36,6 +36,8 @@ const ERROR_MESSAGES = (code=400) => {
     switch (code) {
         case 403:
             return "ratelimit";
+        case 409:
+            return "maxsize";
         default:
             return "fail";
     }
