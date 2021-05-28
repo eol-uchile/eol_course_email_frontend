@@ -10,10 +10,11 @@ export const getReceivedEmails = async( courseId ) => {
         const data = await response.json();
         const emails = data.map( e => {
             return {
-                subject : e.subject,
-                message : e.message,
-                sender  : e.sender_user__profile__name.toLowerCase(),
-                date    : (new Date(e.created_at.$date)).toLocaleString('es-CL')
+                subject     : e.subject,
+                message     : e.message,
+                sender      : e.sender_user.toLowerCase(),
+                files_list  : e.files_list,
+                date        : (new Date(e.created_at.$date)).toLocaleString('es-CL')
             }
         });
         return emails;

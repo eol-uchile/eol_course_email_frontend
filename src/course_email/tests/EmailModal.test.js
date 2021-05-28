@@ -11,7 +11,17 @@ describe('Testing <EmailModal /> App Component', () => {
         message : "Message text",
         sender  : "Sender text",
         date    : "Date text",
-        receiver_users : ["user name 1", "user name 2"]
+        receiver_users  : ["user name 1", "user name 2"],
+        files_list      : [
+            {
+                name: 'file1',
+                url : 'url1'
+            },
+            {
+                name: 'file2',
+                url : 'url2'
+            },
+        ]
     };
     const modalState = true;
     const setModalState = jest.fn();
@@ -35,6 +45,8 @@ describe('Testing <EmailModal /> App Component', () => {
         expect( screen.getByText('Date text'));
         expect( screen.getByText('user name 1'));
         expect( screen.getByText('user name 2'));
+        expect( screen.getByText('file1'));
+        expect( screen.getByText('file2'));
     });
 
     test('Close modal', () => {

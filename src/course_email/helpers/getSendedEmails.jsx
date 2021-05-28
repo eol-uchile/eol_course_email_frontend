@@ -14,6 +14,7 @@ export const getSendedEmails = async( courseId ) => {
                 message         : e.message,
                 sender          : e.sender_user.toLowerCase(),
                 receiver_users  : e.receiver_users_list,
+                files_list      : e.files_list,
                 date            : (new Date(e.created_at.$date)).toLocaleString('es-CL')
             }
         });

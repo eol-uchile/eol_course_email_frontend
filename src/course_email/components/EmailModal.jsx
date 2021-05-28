@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from '@edx/paragon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 export const EmailModal = ({ email, modalState, setModalState }) => {
 
@@ -39,6 +41,34 @@ export const EmailModal = ({ email, modalState, setModalState }) => {
         <div className="text-justify col col-9 py-2">
           { email.message }
         </div>
+        {
+          email.files_list?.length > 0
+          &&
+          (
+            <>
+              <div className="font-weight-bold col col-3 py-2">
+                Archivos adjuntos
+              </div>
+              <div className="text-justify col col-9 py-2">
+                {
+                  email.files_list.map((file, index) => (
+                    <a 
+                      key={ index }
+                      target="_blank"
+                      href={ file.url }>
+                        <Button 
+                          variant="outline-primary"
+                          size="sm"
+                        > <FontAwesomeIcon icon={faDownload} className="mr-2" /> { file.name }
+                        </Button>
+                    </a>
+                    
+                  ))
+                }
+              </div>
+            </>
+          )
+        }
         
         { 
           email.receiver_users
