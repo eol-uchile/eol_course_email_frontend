@@ -30,7 +30,7 @@ export const NewEmailForm = ( { courseId } ) => {
                 </Form.Row>
                 <Form.Group controlId="formGridSubject">
                     <Form.Label className="lead">Asunto</Form.Label>
-                    <Form.Control required placeholder="Asunto del correo" aria-describedby="subjectInput" name="subjectInput" onChange={ handleInputChange } value={subjectInput}/>
+                    <Form.Control required maxLength="50" placeholder="Asunto del correo" aria-describedby="subjectInput" name="subjectInput" onChange={ handleInputChange } value={subjectInput}/>
                 </Form.Group>
                 <Form.Group controlId="formGridMessage">
                     <Form.Label className="lead">Mensaje</Form.Label>
